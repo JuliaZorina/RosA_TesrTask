@@ -64,9 +64,6 @@ namespace TestTask.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Name")
-                        .IsUnique();
-
                     b.ToTable("Users");
                 });
 
