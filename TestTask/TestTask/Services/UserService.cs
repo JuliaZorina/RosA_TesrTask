@@ -20,6 +20,11 @@ namespace TestTask.Services
       return _db.Users.FirstOrDefault(u => u.Id.Equals(userId));
     }
 
+    public UserEntity GetUserByName(string userName)
+    {
+      return _db.Users.FirstOrDefault(u => u.Name.Equals(userName));
+    }
+
     public List<UserEntity> GetAllUsers()
     {
       return _db.Users.ToList();
