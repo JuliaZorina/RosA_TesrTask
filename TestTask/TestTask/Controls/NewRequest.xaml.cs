@@ -10,6 +10,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TestTask.DB;
+using TestTask.Entity;
+using TestTask.Services;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace TestTask.Controls
 {
@@ -21,6 +25,48 @@ namespace TestTask.Controls
     public NewRequest()
     {
       InitializeComponent();
+      this.RequestTypeComboBox.ItemsSource = Enum.GetValues<Enums.RequestType>();
+    }
+
+    private void Send_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+      if (string.IsNullOrEmpty(this.RequestsNumberTextBox.Text))
+      {
+        MessageBox.Show($"Поле 'Количество запросов' не может быть пустым.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+        return;
+      }
+
+      var request = new Request();
+      request.Id = Guid.NewGuid();
+      request.Status = Enums.RequestStatus.Created;
+      if (int.TryParse(this.RequestsNumberTextBox.Text, out int number))
+      {
+        request.NumberOfRequests = number;
+      }
+      else
+      {
+        MessageBox.Show($"Поле 'Количество запросов' не может быть строкой, введите число.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+        return;
+      }
+      request.Reason = new TextRange(
+          this.RequestReasonTextBox.Document.ContentStart,
+          this.RequestReasonTextBox.Document.ContentEnd
+      ).Text;
+      // TODO: заменить потом на нормальные данные, сейчас просто для теста
+      request.UserId = Guid.NewGuid();
+      request.User = new UserEntity() { Id = request.UserId, Name = "Test", Role = Enums.UserRole.Worker };
+
+      var db = new ApplicationDbContext();
+      var requestService = new RequestService(db);
+      requestService.CreateNewRequest(request);
+      var window = Window.GetWindow(this);
+      window.Close();
+    }
+
+    private void Cancel_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+      var window = Window.GetWindow(this);
+      window.Close();
     }
   }
 }
