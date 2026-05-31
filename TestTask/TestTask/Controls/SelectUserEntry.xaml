@@ -24,7 +24,7 @@
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
             <Button Grid.Row="0" Content="Войти как сотрудник" x:Name="EnterAsWorker" PreviewMouseLeftButtonDown="EnterAsWorker_PreviewMouseLeftButtonDown"/>
-            <Button Grid.Row="2" Content="Войти как бухгалтер"/>
+            <Button Grid.Row="2" Content="Войти как бухгалтер" x:Name="EnterAsAccountant" PreviewMouseLeftButtonDown="EnterAsAccountant_PreviewMouseLeftButtonDown"/>
         </Grid>
     </Grid>
 </UserControl>

@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
         <TextBlock Text="Запросы" x:Name="TableName" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0" FontSize="20" FontWeight="Bold"/>
         <DataGrid x:Name="ReuestsGrid" Grid.Row="1" AutoGenerateColumns="False" HorizontalGridLinesBrush="DarkGray"
-    RowBackground="LightGray" AlternatingRowBackground="White">
+    RowBackground="LightGray" AlternatingRowBackground="White" CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="RequestDate" Header="Дата" Binding="{Binding Path=CreatedAt}" Width="50" />
                 <DataGridTextColumn x:Name="RequestWorker" Header="Сотрудник" Binding="{Binding Path=UserName}" Width="*" />

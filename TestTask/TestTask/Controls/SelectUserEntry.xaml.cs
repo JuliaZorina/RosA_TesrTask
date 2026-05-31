@@ -27,5 +27,12 @@ namespace TestTask.Controls
     {
       this.Content = new WorkerView();
     }
+
+    private void EnterAsAccountant_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+      var accontantWindow = new AccountantRequestTableView();
+      accontantWindow.Owner = Window.GetWindow(this);
+      accontantWindow.Show();
+    }
   }
 }
