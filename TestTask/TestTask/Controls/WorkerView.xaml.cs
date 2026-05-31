@@ -13,14 +13,34 @@ using System.Windows.Shapes;
 
 namespace TestTask.Controls
 {
-    /// <summary>
-    /// Логика взаимодействия для WorkerView.xaml
-    /// </summary>
-    public partial class WorkerView : UserControl
+  /// <summary>
+  /// Логика взаимодействия для WorkerView.xaml
+  /// </summary>
+  public partial class WorkerView : UserControl
+  {
+    public WorkerView()
     {
-        public WorkerView()
-        {
-            InitializeComponent();
-        }
+      InitializeComponent();
     }
+
+    private void NewRequest_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+
+    }
+
+    private void ViewRequestsHistory_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+      var window = new ViewRequestsHistoryWindow();
+
+      window.Owner = Window.GetWindow(this);
+
+      window.ShowDialog();
+    }
+
+    private void BackToMainMenu_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+      MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
+      mainWindow.Content = new SelectUserEntry();
+    }
+  }
 }

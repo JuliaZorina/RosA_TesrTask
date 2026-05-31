@@ -22,9 +22,9 @@
                 <RowDefinition Height="*" /> 
                 <RowDefinition Height="*"/> 
             </Grid.RowDefinitions>
-            <Button Grid.Row="0" Content="Создать новый запрос" Margin="5,10" Padding="10"/>
-            <Button Grid.Row="1" Content="Просмотреть историю запросов" Margin="5,10" Padding="10"/>
-            <Button Grid.Row="2" Content="Выход" Margin="5,10" Padding="10"/>
+            <Button x:Name="NewRequest" Grid.Row="0" Content="Создать новый запрос" Margin="5,10" Padding="10" PreviewMouseLeftButtonDown="NewRequest_PreviewMouseLeftButtonDown"/>
+            <Button x:Name="ViewRequestsHistory" Grid.Row="1" Content="Просмотреть историю запросов" Margin="5,10" Padding="10" PreviewMouseLeftButtonDown="ViewRequestsHistory_PreviewMouseLeftButtonDown"/>
+            <Button x:Name="BackToMainMenu" Grid.Row="2" Content="Выход" Margin="5,10" Padding="10" PreviewMouseLeftButtonDown="BackToMainMenu_PreviewMouseLeftButtonDown"/>
 
         </Grid>
     </Grid>
