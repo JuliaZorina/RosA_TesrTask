@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
 using TestTask.DB;
 using TestTask.Entity;
 using TestTask.Enums;
@@ -36,19 +37,10 @@ namespace TestTask.Services
       return _db.Requests.Where(r => r.User.Name.Equals(userName)).ToList();
     }
 
-    public async Task EditRequestStatus(Guid requestId, RequestStatus newStatus)
+    public async Task EditRequestStatus(Request request)
     {
-      var foundRequest = _db.Requests.Find(requestId);
-      if (foundRequest != null)
-      {
-        foundRequest?.Status = newStatus;
-        _db.Update(foundRequest);
-        await _db.SaveChangesAsync();
-      }
-      else
-      {
-        throw new ArgumentException($"Запрос с id {requestId} не найден.");
-      }
+      _db.Update(request);
+      await _db.SaveChangesAsync();
     }
 
     public void CreateNewRequest(Request request)

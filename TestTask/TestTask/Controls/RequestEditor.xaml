@@ -64,8 +64,8 @@
             <ComboBox  Grid.Column="1" x:Name="RequsеstSatus" Grid.Row="1"  FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5,0,10" MinWidth="250" Height="40" Text="testText"/>
         </Grid>
         <Grid Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2">
-            <Button Content="Сохранить" Background="AliceBlue" HorizontalAlignment="Right" Margin="150,5" Width="150" Height="40"/>
-            <Button Content="Отменить" HorizontalAlignment="Right" Margin="10,5" Width="100" Height="40"/>
+            <Button x:Name="Save" Content="Сохранить" Background="AliceBlue" HorizontalAlignment="Right" Margin="150,5" Width="150" Height="40" PreviewMouseDown="Save_PreviewMouseDown"/>
+            <Button x:Name="Cancel" Content="Отменить" HorizontalAlignment="Right" Margin="10,5" Width="100" Height="40" PreviewMouseDown="Cancel_PreviewMouseDown"/>
         </Grid>
     </Grid>
 </UserControl>

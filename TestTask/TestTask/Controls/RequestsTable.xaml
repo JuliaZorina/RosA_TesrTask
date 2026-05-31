@@ -24,7 +24,7 @@
                 <DataGridTemplateColumn x:Name="RequestActions" Header="Действия" Width="*" >
                 <DataGridTemplateColumn.CellTemplate>
                     <DataTemplate>
-                        <Button Content="Изменить статус"/>
+                            <Button x:Name="EditStatus" Content="Изменить статус" PreviewMouseDown="Button_PreviewMouseDown" CommandParameter="{Binding}"/>
                     </DataTemplate>
                 </DataGridTemplateColumn.CellTemplate>
                </DataGridTemplateColumn>
