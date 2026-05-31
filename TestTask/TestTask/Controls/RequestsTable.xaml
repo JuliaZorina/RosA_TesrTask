@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="TestTask.Controls.RequestsTable"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TestTask.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="AliceBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Запросы" x:Name="TableName" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0" FontSize="20" FontWeight="Bold"/>
+        <DataGrid Grid.Row="1" AutoGenerateColumns="False" HorizontalGridLinesBrush="DarkGray"
+    RowBackground="LightGray" AlternatingRowBackground="White">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="RequestDate" Header="Дата" Binding="{Binding Path=CreatedAt}" Width="50" />
+                <DataGridTextColumn x:Name="RequestWorker" Header="Сотрудник" Binding="{Binding Path=UserName}" Width="*" />
+                <DataGridTextColumn x:Name="RequestType" Header="Вид справки" Binding="{Binding Path=RequestType}" Width="*" />
+                <DataGridTextColumn x:Name="RequestNumber" Header="Количество" Binding="{Binding Path=Number}" Width="*" />
+                <DataGridTextColumn x:Name="RequestReason" Header="Причина" Binding="{Binding Path=Reason}" Width="*" />
+                <DataGridTextColumn x:Name="RequestStatus" Header="Статус" Binding="{Binding Path=RequestStatus}" Width="*" />
+                <DataGridTemplateColumn x:Name="RequestActions" Header="Действия" Width="*" >
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button Content="Изменить статус"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+               </DataGridTemplateColumn>
+            </DataGrid.Columns>
+            <DataGrid.Items >
+                
+            </DataGrid.Items>
+        </DataGrid>
+    </Grid>
+</UserControl>
