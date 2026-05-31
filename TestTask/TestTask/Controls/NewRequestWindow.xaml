@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestTask.Controls"
         mc:Ignorable="d"
-        
+        WindowStyle="None"
         Title="Создать новую заявку" >
     <Grid>
-        <local:NewRequest Margin="10"/>
+        <local:NewRequest />
     </Grid>
 </Window>

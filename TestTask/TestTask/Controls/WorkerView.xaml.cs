@@ -25,7 +25,11 @@ namespace TestTask.Controls
 
     private void NewRequest_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
+      var window = new NewRequestWindow();
 
+      window.Owner = Window.GetWindow(this);
+
+      window.ShowDialog();
     }
 
     private void ViewRequestsHistory_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
