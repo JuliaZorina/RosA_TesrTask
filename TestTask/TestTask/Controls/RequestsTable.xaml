@@ -16,7 +16,7 @@
     RowBackground="LightGray" AlternatingRowBackground="White" CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="RequestDate" Header="Дата" Binding="{Binding Path=CreatedAt}" Width="50" />
-                <DataGridTextColumn x:Name="RequestWorker" Header="Сотрудник" Binding="{Binding Path=UserName}" Width="*" />
+                <DataGridTextColumn x:Name="RequestWorker" Header="Сотрудник" Binding="{Binding Path=Name}" Width="*" />
                 <DataGridTextColumn x:Name="RequestType" Header="Вид справки" Binding="{Binding Path=RequestTypeName}" Width="*" />
                 <DataGridTextColumn x:Name="RequestNumber" Header="Количество" Binding="{Binding Path=NumberOfRequests}" Width="*" />
                 <DataGridTextColumn x:Name="RequestReason" Header="Причина" Binding="{Binding Path=Reason}" Width="*" />

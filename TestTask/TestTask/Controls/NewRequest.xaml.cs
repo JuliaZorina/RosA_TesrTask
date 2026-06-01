@@ -22,6 +22,8 @@ namespace TestTask.Controls
   /// </summary>
   public partial class NewRequest : UserControl
   {
+    internal UserEntity CurrentUser;
+
     public NewRequest()
     {
       InitializeComponent();
@@ -52,9 +54,8 @@ namespace TestTask.Controls
           this.RequestReasonTextBox.Document.ContentStart,
           this.RequestReasonTextBox.Document.ContentEnd
       ).Text;
-      // TODO: заменить потом на нормальные данные, сейчас просто для теста
-      request.UserId = Guid.NewGuid();
-      request.User = new UserEntity() { Id = request.UserId, Name = "Test", Role = Enums.UserRole.Worker };
+      request.UserId = CurrentUser.Id;
+      //request.User = CurrentUser;
 
       var db = new ApplicationDbContext();
       var requestService = new RequestService(db);
