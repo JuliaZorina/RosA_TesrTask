@@ -47,12 +47,14 @@ namespace TestTask.Services
     {
       if (request == null)
       {
-        throw new ArgumentNullException(nameof(request));
+        MessageBox.Show($"Запрос не может быть пустым.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+        return;
       }
 
       if (_db.Requests.Contains(request))
       {
-        throw new ArgumentException($"Запрос с id {request.Id} уже существует.");
+        MessageBox.Show($"Запрос с id {request.Id} уже существует.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+        return;
       }
 
       _db.Requests.Add(request);

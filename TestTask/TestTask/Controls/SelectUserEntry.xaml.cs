@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -25,7 +26,9 @@ namespace TestTask.Controls
 
     private void EnterAsWorker_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
-      this.Content = new WorkerView();
+      var window = new ChooseWorker();
+      window.Owner = Window.GetWindow(this);
+      window.Show();
     }
 
     private void EnterAsAccountant_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

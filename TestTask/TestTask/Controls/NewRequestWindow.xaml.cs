@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TestTask.Entity;
 
 namespace TestTask.Controls
 {
@@ -17,9 +18,13 @@ namespace TestTask.Controls
   /// </summary>
   public partial class NewRequestWindow : Window
   {
-    public NewRequestWindow()
+    private readonly UserEntity _currentUser;
+
+    public NewRequestWindow(UserEntity userEntity)
     {
       InitializeComponent();
+      _currentUser = userEntity;
+      this.NewRequestControl.CurrentUser = _currentUser;
     }
   }
 }

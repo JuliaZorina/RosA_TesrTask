@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TestTask.Entity;
 
 namespace TestTask.Controls
 {
@@ -18,14 +19,18 @@ namespace TestTask.Controls
   /// </summary>
   public partial class WorkerView : UserControl
   {
-    public WorkerView()
+    private readonly UserEntity _currentUser;
+
+
+    public WorkerView(UserEntity currentUser)
     {
       InitializeComponent();
+      _currentUser = currentUser;
     }
 
     private void NewRequest_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
-      var window = new NewRequestWindow();
+      var window = new NewRequestWindow(_currentUser);
 
       window.Owner = Window.GetWindow(this);
 
@@ -35,6 +40,7 @@ namespace TestTask.Controls
     private void ViewRequestsHistory_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
       var window = new ViewRequestsHistoryWindow();
+      window.SeDataForCurrentUser(_currentUser);
 
       window.Owner = Window.GetWindow(this);
 
@@ -43,8 +49,8 @@ namespace TestTask.Controls
 
     private void BackToMainMenu_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
-      MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
-      mainWindow.Content = new SelectUserEntry();
+      var window = Window.GetWindow(this);
+      window.Close();
     }
   }
 }

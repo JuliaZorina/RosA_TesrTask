@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TestTask.DB;
+using TestTask.Entity;
 using TestTask.Services;
 
 namespace TestTask.Controls
@@ -22,10 +23,13 @@ namespace TestTask.Controls
     public ViewRequestsHistoryWindow()
     {
       InitializeComponent();
-      ShowData();
+    }
+    public void SeDataForCurrentUser(UserEntity user)
+    {
+      ShowData(user);
     }
 
-    private void ShowData()
+    private void ShowData(UserEntity user)
     {
       this.Table.RequestActions.Visibility = Visibility.Collapsed;
       this.Table.RequestWorker.Visibility = Visibility.Collapsed;
@@ -33,7 +37,7 @@ namespace TestTask.Controls
 
       var db = new ApplicationDbContext();
       var requestService = new RequestService(db);
-      var requests = requestService.GetAllRequests();
+      var requests = requestService.GetAllRequestsByUserId(user.Id);
 
       if (requests != null)
       {

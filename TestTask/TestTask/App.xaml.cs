@@ -16,6 +16,7 @@ namespace TestTask
       using var db = new ApplicationDbContext();
 
       db.Database.Migrate();
+      DataSeeder.Seed(db);
 
       base.OnStartup(e);
     }
