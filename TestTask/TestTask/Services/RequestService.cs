@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -24,7 +25,7 @@ namespace TestTask.Services
 
     public List<Request> GetAllRequests()
     {
-      return _db.Requests.ToList();
+      return _db.Requests.Include(r => r.User).ToList();
     }
 
     public List<Request> GetAllRequestsByUserId(Guid userId)

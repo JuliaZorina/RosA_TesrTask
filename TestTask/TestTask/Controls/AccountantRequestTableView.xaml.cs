@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TestTask.DB;
+using TestTask.Entity;
 using TestTask.Services;
 
 namespace TestTask.Controls
@@ -23,6 +24,7 @@ namespace TestTask.Controls
     {
       InitializeComponent(); var db = new ApplicationDbContext();
       var requestService = new RequestService(db);
+      var userService = new UserService(db);
       var requests = requestService.GetAllRequests();
 
       if (requests != null)
