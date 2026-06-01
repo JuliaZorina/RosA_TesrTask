@@ -50,6 +50,7 @@ namespace TestTask.Controls
       var request = new Request();
       request.Id = Guid.NewGuid();
       request.Status = RequestStatus.Created;
+      request.CreatedAt = DateTime.Now;
       var requestType = (RequestType)this.RequestTypeComboBox.SelectedValue;
       request.RequestTypeName = requestType;
       if (int.TryParse(this.RequestsNumberTextBox.Text, out int number))
