@@ -28,6 +28,7 @@ namespace TestTask.Controls
       this.RequestStatusEditor.RequsеstReason.Text = request.Reason;
       this.RequestStatusEditor.RequestId = request.Id;
       this.RequestStatusEditor.UserName.Text = userName;
+      this.RequestStatusEditor.EditorName.Content = this.RequestStatusEditor.EditorName.Content.ToString()+request.CreatedAt.ToString();
 
       this.RequestStatusEditor.RequsеstSatus.ItemsSource = Enum.GetValues<RequestStatus>()
         .Select(x => new
