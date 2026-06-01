@@ -12,6 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TestTask.DB;
 using TestTask.Entity;
+using TestTask.Enums;
 using TestTask.Services;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -27,7 +28,15 @@ namespace TestTask.Controls
     public NewRequest()
     {
       InitializeComponent();
-      this.RequestTypeComboBox.ItemsSource = Enum.GetValues<Enums.RequestType>();
+      this.RequestTypeComboBox.ItemsSource = Enum.GetValues<RequestType>()
+        .Select(x => new
+        {
+          Value = x,
+          Name = x.GetDescription()
+        })
+        .ToList();
+      this.RequestTypeComboBox.DisplayMemberPath = "Name";
+      this.RequestTypeComboBox.SelectedValuePath = "Value";
     }
 
     private void Send_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -40,7 +49,9 @@ namespace TestTask.Controls
 
       var request = new Request();
       request.Id = Guid.NewGuid();
-      request.Status = Enums.RequestStatus.Created;
+      request.Status = RequestStatus.Created;
+      var requestType = (RequestType)this.RequestTypeComboBox.SelectedValue;
+      request.RequestTypeName = requestType;
       if (int.TryParse(this.RequestsNumberTextBox.Text, out int number))
       {
         request.NumberOfRequests = number;

@@ -36,7 +36,7 @@ namespace TestTask.Controls
 
     private void Save_PreviewMouseDown(object sender, MouseButtonEventArgs e)
     {
-      var status = (RequestStatus)this.RequsеstSatus.SelectedItem;
+      var status = (RequestStatus)this.RequsеstSatus.SelectedValue;
       var db = new ApplicationDbContext();
       var requestService = new RequestService(db);
 

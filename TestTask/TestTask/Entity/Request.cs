@@ -12,5 +12,8 @@ namespace TestTask.Entity
     public string Reason { get; set; }
     public RequestStatus Status { get; set; }
     public UserEntity User { get; set; } = null!;
+
+    public string StatusName => Status.GetDescription();
+    public string RequestType => RequestTypeName.GetDescription();
   }
 }

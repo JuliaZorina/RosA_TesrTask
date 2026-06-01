@@ -17,10 +17,10 @@
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="RequestDate" Header="Дата" Binding="{Binding Path=CreatedAt}" Width="50" />
                 <DataGridTextColumn x:Name="RequestWorker" Header="Сотрудник" Binding="{Binding Path=User.Name}" Width="*" />
-                <DataGridTextColumn x:Name="RequestType" Header="Вид справки" Binding="{Binding Path=RequestTypeName}" Width="*" />
+                <DataGridTextColumn x:Name="RequestType" Header="Вид справки" Binding="{Binding Path=RequestType}" Width="*" />
                 <DataGridTextColumn x:Name="RequestNumber" Header="Количество" Binding="{Binding Path=NumberOfRequests}" Width="*" />
                 <DataGridTextColumn x:Name="RequestReason" Header="Причина" Binding="{Binding Path=Reason}" Width="*" />
-                <DataGridTextColumn x:Name="RequestStatus" Header="Статус" Binding="{Binding Path=Status}" Width="*" />
+                <DataGridTextColumn x:Name="RequestStatus" Header="Статус" Binding="{Binding Path=StatusName}" Width="*" />
                 <DataGridTemplateColumn x:Name="RequestActions" Header="Действия" Width="*" >
                 <DataGridTemplateColumn.CellTemplate>
                     <DataTemplate>
