@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TestTask.Entity;
+using TestTask.Enums;
 
 namespace TestTask.Controls
 {
@@ -24,12 +25,20 @@ namespace TestTask.Controls
 
       //this.RequestStatusEditor.UserName.Text = request.User.Name;
       this.RequestStatusEditor.RequsеstsNumber.Text = request.NumberOfRequests.ToString();
-      this.RequestStatusEditor.RequstType.Text = request.RequestTypeName.ToString();
+      this.RequestStatusEditor.RequstType.Text = request.RequestType;
       this.RequestStatusEditor.RequsеstReason.Text = request.Reason;
       this.RequestStatusEditor.RequestId = request.Id;
 
-      this.RequestStatusEditor.RequsеstSatus.ItemsSource = Enum.GetValues<Enums.RequestStatus>();
-      RequestStatusEditor.RequsеstSatus.SelectedItem = request.Status;
+      this.RequestStatusEditor.RequsеstSatus.ItemsSource = Enum.GetValues<RequestStatus>()
+        .Select(x => new
+        {
+          Value = x,
+          Name = x.GetDescription()
+        })
+        .ToList();
+      this.RequestStatusEditor.RequsеstSatus.DisplayMemberPath = "Name";
+      this.RequestStatusEditor.RequsеstSatus.SelectedValuePath = "Value";
+      RequestStatusEditor.RequsеstSatus.SelectedItem = request.StatusName;
     }
   }
 }
