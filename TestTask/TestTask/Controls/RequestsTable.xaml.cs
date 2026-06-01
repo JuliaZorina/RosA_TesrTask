@@ -41,8 +41,15 @@ namespace TestTask.Controls
         return;
       }
 
+      var userService = new UserService(db);
+      var foundUser = userService.GetUserById(foundRequest.UserId);
+      if (foundUser == null)
+      { 
+        MessageBox.Show("Владелец заявки не найден.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+        return;
+      }
 
-      var window = new EditRequestStatusWindow(foundRequest);
+      var window = new EditRequestStatusWindow(foundRequest, foundUser.Name);
       window.Owner = Window.GetWindow(this);
       var result = window.ShowDialog();
 

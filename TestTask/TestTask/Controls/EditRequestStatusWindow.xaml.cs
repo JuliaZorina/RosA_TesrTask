@@ -19,15 +19,15 @@ namespace TestTask.Controls
   /// </summary>
   public partial class EditRequestStatusWindow : Window
   {
-    public EditRequestStatusWindow(Request request)
+    public EditRequestStatusWindow(Request request, string userName)
     {
       InitializeComponent();
 
-      //this.RequestStatusEditor.UserName.Text = request.User.Name;
       this.RequestStatusEditor.RequsеstsNumber.Text = request.NumberOfRequests.ToString();
       this.RequestStatusEditor.RequstType.Text = request.RequestType;
       this.RequestStatusEditor.RequsеstReason.Text = request.Reason;
       this.RequestStatusEditor.RequestId = request.Id;
+      this.RequestStatusEditor.UserName.Text = userName;
 
       this.RequestStatusEditor.RequsеstSatus.ItemsSource = Enum.GetValues<RequestStatus>()
         .Select(x => new
