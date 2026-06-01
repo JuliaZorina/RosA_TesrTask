@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="TestTask.Controls.RequestEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TestTask.Controls"
+             mc:Ignorable="d">
+    <Grid Background="AliceBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="EditorName" Grid.Row="0" Grid.Column="1" Content="Редактровать статус заявки от " FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10"/>
+       
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Имя сотрудника:" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Bottom"  Margin="0,5"/>
+            <TextBlock Grid.Column="1" x:Name="UserName" Grid.Row="1" Text="(например, Иван)" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5"/>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Вид справки:" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Bottom"  Margin="0,5"/>
+            <TextBlock Grid.Column="1" x:Name="RequstType" Grid.Row="1" Text="(например, справка о доходах)" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5"/>
+        </Grid>
+        <Grid Grid.Row="3" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Количество экземпляров:" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Bottom"  Margin="0,5"/>
+            <TextBlock Grid.Column="1" x:Name="RequsеstsNumber" Grid.Row="1" Text="(например, 3)" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5"/>
+        </Grid>
+        <Grid Grid.Row="4" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Причина:" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="0"/>
+            <TextBlock  Grid.Column="1" x:Name="RequsеstReason" Grid.Row="1"  FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5" MinWidth="250" MinHeight="150" Text="testText"/>
+        </Grid>
+        <Grid Grid.Row="5" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Статус:" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="0"/>
+            <ComboBox  Grid.Column="1" x:Name="RequsеstSatus" Grid.Row="1"  FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5,0,10" MinWidth="250" Height="40" Text="testText"/>
+        </Grid>
+        <Grid Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2">
+            <Button x:Name="Save" Content="Сохранить" Background="AliceBlue" HorizontalAlignment="Right" Margin="150,5" Width="150" Height="40" PreviewMouseDown="Save_PreviewMouseDown"/>
+            <Button x:Name="Cancel" Content="Отменить" HorizontalAlignment="Right" Margin="10,5" Width="100" Height="40" PreviewMouseDown="Cancel_PreviewMouseDown"/>
+        </Grid>
+    </Grid>
+</UserControl>
